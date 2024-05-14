@@ -56,7 +56,7 @@ func processFile(ctx context.Context, bucket, name string) error {
 	defer bqClient.Close()
 
 	// Load the CSV data into BigQuery
-	table := bqClient.Dataset("your_dataset").Table("tfmv")
+	table := bqClient.Dataset("tfmv").Table("tfmv_staging")
 	gcsRef := bigquery.NewGCSReference(fmt.Sprintf("gs://%s/%s", bucket, name))
 	gcsRef.SourceFormat = bigquery.CSV
 
